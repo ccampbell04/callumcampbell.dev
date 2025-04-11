@@ -1,7 +1,0 @@
-.navElement {
-  display: inline-flex; 
-  align-items: center;
-  gap: 0.25rem;
-  white-space: nowrap; 
-  padding: 0.5rem 1rem;
-}

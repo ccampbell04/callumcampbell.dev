@@ -16,9 +16,9 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.layout}>
-          <NavBar />
           <Explorer />
-          {activeEditor && <Editor file={activeEditor} />}
+          <NavBar />
+          <Editor file={activeEditor} />
         </div>
       </main>
       <footer className={styles.footer}>Callum Campbell, 2025</footer>

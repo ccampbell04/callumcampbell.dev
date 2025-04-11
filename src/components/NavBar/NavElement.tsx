@@ -1,5 +1,13 @@
-import styles from "./NavElement.module.css"; 
 import { useActiveContext } from "@/context/active/useActiveContext";
+import styled from "styled-components";
+
+const StyledNavElement = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+`;
 
 export default function NavElement({
   name,
@@ -17,7 +25,7 @@ export default function NavElement({
   };
 
   return (
-    <div className={styles.navElement}>
+    <StyledNavElement>
       <button onClick={handleClick}>{name}</button>
       <button
         className="nav-button"
@@ -27,6 +35,6 @@ export default function NavElement({
       >
         &times;
       </button>
-    </div>
+    </StyledNavElement>
   );
 }

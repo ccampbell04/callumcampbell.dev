@@ -3,8 +3,19 @@
 import { useEditorContext } from "@/context/editor/useEditorContext";
 import NavElement from "@/components/NavBar/NavElement";
 import { useActiveContext } from "@/context/active/useActiveContext";
-import styles from "./NavBar.module.css"; // Import styles from a CSS module
+import styled from "styled-components";
 
+const Navbar = styled.div`
+  grid-area: navbar;
+  color: white;
+  padding: 1rem;
+`;
+
+const NavElementContainer = styled.div`
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+`;
 export default function NavBar() {
   const editorContext = useEditorContext();
   const { editorState, setEditorState } = editorContext;
@@ -22,12 +33,12 @@ export default function NavBar() {
   };
 
   return (
-    <div className={styles.navbar}>
-      <div className={styles.navElement}>
+    <Navbar>
+      <NavElementContainer>
         {editorState.map((file: string) => {
           return <NavElement name={file} onClick={handleClick} key={file} />;
         })}
-      </div>
-    </div>
+      </NavElementContainer>
+    </Navbar>
   );
 }

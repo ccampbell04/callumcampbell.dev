@@ -1,15 +1,25 @@
 import { FileTypeHandler } from "./fileTypes/FileTypeHandler";
-import styles from "./Editor.module.css";
+import styled from "styled-components";
 
-export function Editor({ file }: { file: string }) {
+const EditorContainer = styled.div`
+  grid-area: editor;
+  background-color: #1e1e1e;
+  padding: 1rem;
+`;
+
+export function Editor({ file }: { file: string | undefined }) {
+  if (!file) {
+    return <EditorContainer>No file selected</EditorContainer>;
+  }
+  
   const fileType = file.split(".").pop()?.toLowerCase() || "404";
 
   return (
-    <div className={styles.editor}>
+    <EditorContainer>
       <h1>Editor</h1>
       <p>Editing file: {file}</p>
       <p>File type: {fileType}</p>
       <FileTypeHandler extension={fileType} />
-    </div>
+    </EditorContainer>
   );
 }

@@ -1,14 +1,19 @@
 import fileConstants from "@/util/fileConstants";
-import File from "@/components/files/File/File";
-import Directory from "../files/Directory/Directory";
+import Directory from "@/components/files/Directory/Directory";
+import styled from "styled-components";
+
+const ExplorerContainer = styled.div`
+  grid-area: explorer;
+  padding: 1rem;
+`;
 
 export default function Explorer() {
   const files = fileConstants["src/"];
   const src = "src/";
 
   return (
-    <div className="explorer">
+    <ExplorerContainer className="explorer">
       <Directory name={src} files={files} />
-    </div>
+    </ExplorerContainer>
   );
 }
