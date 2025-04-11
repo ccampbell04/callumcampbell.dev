@@ -1,0 +1,13 @@
+.navbar {
+  grid-area: navbar;
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+.navElement {
+   display: flex;
+   overflow-x: auto;
+   white-space: nowrap;
+ }
+ 

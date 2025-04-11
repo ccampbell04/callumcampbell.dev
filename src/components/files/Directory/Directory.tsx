@@ -1,7 +1,7 @@
 "use client";
 
 import fileConstants from "@/util/fileConstants";
-import File from "@/components/files/File";
+import File from "@/components/files/File/File";
 import { useState } from "react";
 
 export default function Directory({

@@ -1,6 +1,6 @@
 import fileConstants from "@/util/fileConstants";
-import File from "@/components/files/File"; 
-import Directory from "./files/Directory";
+import File from "@/components/files/File/File";
+import Directory from "../files/Directory/Directory";
 
 export default function Explorer() {
   const files = fileConstants["src/"];

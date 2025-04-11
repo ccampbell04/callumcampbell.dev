@@ -11,7 +11,7 @@ interface ActiveContextType {
 const ActiveContext = createContext<ActiveContextType | null>(null);
 
 export const ActiveProvider = ({ children }: { children: ReactNode }) => {
-   const [activeEditor, setActiveEditor] = useState<string | undefined>(undefined);
+   const [activeEditor, setActiveEditor] = useState<string | undefined>("README.md");
    return (
       <ActiveContext.Provider value={{ activeEditor, setActiveEditor }}>
          {children}

@@ -1,0 +1,5 @@
+.editor {
+   grid-area: editor;
+   background-color: #fff;
+   padding: 1rem;
+ }
