@@ -4,6 +4,7 @@ import { useEditorContext } from "@/context/editor/useEditorContext";
 import NavElement from "@/components/NavBar/NavElement";
 import { useActiveContext } from "@/context/active/useActiveContext";
 import styled from "styled-components";
+import { usePreviousTabContext } from "@/context/previousTab/usePreviousTabContext";
 
 const Navbar = styled.div`
   grid-area: navbar;
@@ -16,26 +17,34 @@ const NavElementContainer = styled.div`
   overflow-x: auto;
   white-space: nowrap;
 `;
+
 export default function NavBar() {
   const editorContext = useEditorContext();
-  const { editorState, setEditorState } = editorContext;
+  const { editor, setEditor } = editorContext;
   const activeContext = useActiveContext();
   const { activeEditor, setActiveEditor } = activeContext;
+  const PreviousTabContext = usePreviousTabContext();
+  const { previousTab, setPreviousTab } = PreviousTabContext;
 
   const handleClick = (name: string) => {
-    const updatedEditorState = editorState.filter((file) => file !== name);
-    if (editorState.includes(name)) {
-      setEditorState(updatedEditorState);
+    const updatedEditorState = editor.filter((file) => file !== name);
+
+    if (editor.includes(name)) {
+      setEditor(updatedEditorState);
     }
     if (activeEditor === name) {
-      setActiveEditor(updatedEditorState[0]);
+      previousTab.delete(name);
+      setPreviousTab(previousTab);
+
+      const lastElement = Array.from(previousTab).pop();
+      setActiveEditor(lastElement || undefined);
     }
   };
 
   return (
     <Navbar>
       <NavElementContainer>
-        {editorState.map((file: string) => {
+        {editor.map((file: string) => {
           return <NavElement name={file} onClick={handleClick} key={file} />;
         })}
       </NavElementContainer>
